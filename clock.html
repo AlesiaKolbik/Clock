@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clock</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<script src="tclock.js"></script>
+<script src="tClockViewDom.js"></script>
+<script src="tClockControllerButtons.js"></script>
+<script>
+
+    const timeInNY = new Model(-4);
+const controller1 = new Controller(
+    timeInNY,
+    new View(timeInNY, document.body, 'Нью-Йорк (GMT-4)')
+);
+
+const timeInLondon = new Model(1);
+const controller2 = new Controller(
+    timeInLondon,
+    new View(timeInLondon, document.body, 'Лондон (GMT+1)')
+);
+const timeInBerlin = new Model(2);
+const controller3 = new Controller(
+    timeInBerlin,
+    new View(timeInBerlin, document.body, 'Берлин (GMT+2)')
+);
+const timeInMinsk = new Model(3);
+const controller4 = new Controller(
+    timeInMinsk,
+    new View(timeInMinsk, document.body, 'Минск (GMT+3)')
+);
+const timeInTokyo = new Model(9);
+const controller5 = new Controller(
+    timeInTokyo,
+    new View(timeInTokyo, document.body, 'Токио (GMT+9)')
+);
+const timeInVladivostok = new Model(10);
+const controller6 = new Controller(
+    timeInVladivostok,
+    new View(timeInVladivostok, document.body, 'Владивосток (GMT+10)')
+);
+
+</script>
+</body>
+</html>
