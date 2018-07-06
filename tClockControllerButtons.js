@@ -1,4 +1,4 @@
-class Controller {
+class TClockControllerButtons {
     constructor(model, view) {
         this.view = view;
         let self = this;

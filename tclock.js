@@ -1,4 +1,4 @@
-class Model {
+class TClock {
     constructor(gmt) {
         this.gmt = gmt;
         let self = this;
