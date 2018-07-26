@@ -1,4 +1,4 @@
-class TClockViewDOM {
+export class TClockViewDOM {
     constructor(model, host, text) {
         this.model = model;
         this.element = null;

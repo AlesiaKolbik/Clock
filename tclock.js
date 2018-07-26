@@ -1,4 +1,4 @@
-class TClock {
+export class TClock {
     constructor(gmt) {
         this.gmt = gmt;
         let self = this;
@@ -34,10 +34,6 @@ class TClock {
         this.isActive = isOn;
     }
 }
-
-
-
-
 
 
 
