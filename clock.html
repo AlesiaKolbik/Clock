@@ -14,21 +14,22 @@ import { TClock } from './tclock.js';
 import { TClockControllerButtons } from './tClockControllerButtons.js';
 import { TClockViewDOM } from './tClockViewDom.js';
 import { TClockViewSVG } from './tClockViewSVG.js';
+import { TClockViewCanvas } from './tClockViewCanvas.js';
 
 
 const timeZones = [-4, 1, 2, 3, 9, 10];
-const sities = ['Нью-Йорк (GMT-4)', 'Лондон (GMT+1)', 'Берлин (GMT+2)', 'Минск (GMT+3)', 'Токио (GMT+9)', 'Владивосток (GMT+10)'];
+const cities = ['Нью-Йорк (GMT-4)', 'Лондон (GMT+1)', 'Берлин (GMT+2)', 'Минск (GMT+3)', 'Токио (GMT+9)', 'Владивосток (GMT+10)'];
 
-function createClock(timeZonesArray, sitiesArray, host) {
+function createClock(timeZonesArray, citiesArray, host) {
     for (let i = 0; i < timeZonesArray.length; i++) {
         const clock = new TClock(timeZonesArray[i]);
         const controller = new TClockControllerButtons(
             clock,
-            new TClockViewSVG(clock, host, sitiesArray[i])
+            new TClockViewCanvas(clock, host, citiesArray[i])
         );
     }
 }
-createClock(timeZones,sities,document.body);
+createClock(timeZones,cities,document.body);
 
 </script>
 </body>

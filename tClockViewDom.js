@@ -76,18 +76,7 @@ export class TClockViewDOM {
             let sec = this.model.seconds * 6;
             let min = this.model.minutes * 6;
             let hour = this.model.hour * 30 / 2;
-            if (sec + 6 === 366) {
-                sec = 0;
-                min += 6;
-                if (min + 6 === 366) {
-                    min = 0;
-                    hour += 30;
-                    if (hour + 30 === 366) {
-                        hour = 0;
-                    }
-                }
-            }
-            sec += 6;
+
             this.secArrow.style.transform = 'rotate(' + sec + 'deg)';
 
             this.minArrow.style.transform = 'rotate(' + min + 'deg)';
