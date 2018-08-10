@@ -1,19 +1,21 @@
+import { PubSubService } from './pubSub.js';
+
 export class TClock {
     constructor(gmt) {
         this.gmt = gmt;
         let self = this;
         let date = new Date();
+        this.events = new PubSubService();
         let ms = date.getTime() + (date.getTimezoneOffset() * 60000) + this.gmt * 3600000;
         let time = new Date(ms);
         this.hour = time.getHours();
         this.minutes = time.getMinutes();
         this.seconds = time.getSeconds();
-        this.changeCallback = null;
         this.isActive = true;
 
         function recalculate() {
-            if ( self.isActive && typeof (self.changeCallback) === 'function') {
-                self.changeCallback();
+            if (self.isActive && self.events.has('change')) {
+                self.events.pub('change');
             }
             if (self.timer) {
                 clearTimeout(self.timer);
