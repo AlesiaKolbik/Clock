@@ -8,9 +8,14 @@
         model.events.sub('change', function() {
             console.log('changed!!!');
         });
-        view.onCheckedCallback = function(isClicked) {
+        view.events.sub('click', function (isClicked) {
             model.start(isClicked);
-        }
+        });
+
+        /*view.onCheckedCallback = function(isClicked) {
+            model.start(isClicked);
+        }*/
+
     }
 
     renderView() {

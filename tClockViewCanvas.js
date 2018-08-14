@@ -1,3 +1,5 @@
+import {PubSubService} from "./pubSub.js";
+
 export class TClockViewCanvas {
     constructor(model, host, text) {
         this.model = model;
@@ -6,7 +8,8 @@ export class TClockViewCanvas {
         this.text = text;
         this.btnStart = null;
         this.btnStop = null;
-        this.onCheckedCallback = null;
+        //this.onCheckedCallback = null;
+        this.events = new PubSubService();
         this.span = null;
         this.clock = null;
         this.context = null;
@@ -30,12 +33,6 @@ export class TClockViewCanvas {
             this.btnStop.style.margin = '5px';
             this.btnStart.style.padding = '0 10px';
             this.btnStop.style.padding = '0 10px';
-            this.btnStart.addEventListener(
-                'click',
-                e => this.onClicked(true));
-            this.btnStop.addEventListener(
-                'click',
-                e => this.onClicked(false));
             this.element = document.createElement('div');
             this.element.setAttribute('style', 'display: inline-block; width:300px;margin:100px;');
             this.host.appendChild(this.element);
@@ -43,6 +40,12 @@ export class TClockViewCanvas {
             this.element.appendChild(this.btnStop);
             this.element.appendChild(this.span);
             this.span.innerHTML = this.text;
+            this.btnStart.addEventListener(
+                'click',
+                e => this.events.pub('click', true));
+            this.btnStop.addEventListener(
+                'click',
+                e => this.events.pub('click', false));
             this.clock = document.createElement('canvas');
             this.element.appendChild(this.clock);
             this.clock.setAttribute('width', '300');
